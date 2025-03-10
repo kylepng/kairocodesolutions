@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kairo Code Solutions</title>
+
+  <!-- Corporate Font (Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- GSAP & Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+
+  <!-- Lottie for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+
+  <!-- Calendly Badge Widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      Calendly.initBadgeWidget({
+        url: 'https://calendly.com/kylekumarbusiness',
+        text: 'Schedule time with me',
+        color: '#0069ff',
+        textColor: '#ffffff',
+        branding: true
+      });
+    }
+  </script>
+</head>
+<body>
+  <!-- Fixed Header & Hamburger Menu -->
+  <header class="fixed-header">
+    <div class="header-container">
+      <h2 class="logo">Kairo Code Solutions</h2>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav" id="nav">
+        <ul>
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section hero-section">
+    <!-- Lottie for Hero (phonepopup.json) -->
+    <div class="hero-lottie" id="heroLottie"></div>
+    <div class="hero-content glass-card">
+      <h1 class="hero-heading">
+        No more f*cking time wasted on bad devs – We deliver high-end, fast, full-stack solutions.
+      </h1>
+      <p class="hero-subheading">
+        Experience code that scales, performs, and makes your life easier.
+      </p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <h2 class="section-title">About</h2>
+    <div class="about-container glass-card">
+      <div class="about-left">
+        <img src="images/kylekumar.PNG" alt="Kyle Kumar" class="personal-image" />
+      </div>
+      <div class="about-right">
+        <div id="aboutLottie" class="about-lottie"></div>
+        <div class="about-text">
+          <p>
+            I'm <strong>Kyle Kumar</strong> – a full-stack developer dedicated to quality, scalability, and speed.
+            Founded in <strong>2022</strong>, I landed my first job in <strong>2023</strong> and have successfully completed
+            <strong>17 projects</strong> with a 100% success rate and 5-star reviews.
+          </p>
+          <p>
+            I focus on delivering real solutions without the drama, ensuring your business runs smoothly and efficiently.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <!-- Services Section -->
+  <section id="services" class="section services-section">
+    <h2 class="section-title">Services</h2>
+    <div class="services-container glass-card">
+      <!-- Lottie for Services (services.json) -->
+      <div id="servicesLottie" class="services-lottie"></div>
+      <p class="services-intro">
+        We only do <strong>Full-Stack Development</strong> – no fluff. (Frontend, Backend, Database, CI/CD, Performance)
+      </p>
+    </div>
+  </section>
+  <hr class="section-divider" />
+
+  <!-- Projects Section (Grid of Cards, Modal on click) -->
+  <section id="projects" class="section projects-section">
+    <h2 class="section-title">Projects</h2>
+    <!-- Lottie for Projects (floatingcomputer.json) -->
+    <div id="projectsLottie" class="projects-lottie"></div>
+    
+    <div class="projects-grid">
+      <!-- Project Card #1 -->
+      <div class="project-card glass-card" data-project="adminDashboard">
+        <img src="images/admindashboard1.jpg" alt="Admin Dashboard" class="project-thumbnail" />
+        <h3>Enterprise Admin Dashboard</h3>
+        <p>PHP & Angular. High-performance, enterprise-grade solution.</p>
+      </div>
+      <!-- Project Card #2 -->
+      <div class="project-card glass-card" data-project="mobileApp">
+        <img src="images/mobileapp.png" alt="Mobile App" class="project-thumbnail" />
+        <h3>Cross-Platform Mobile App</h3>
+        <p>Capacitor & Ionic. Feature-rich, real-time data, push notifications.</p>
+      </div>
+      <!-- Project Card #3 -->
+      <div class="project-card glass-card" data-project="commandDashboard">
+        <img src="images/commanddashboard1.png" alt="Command Dashboard" class="project-thumbnail" />
+        <h3>Real Estate Command Dashboard</h3>
+        <p>React & Node. Advanced contact filtering, scalable backend.</p>
+      </div>
+    </div>
+  </section>
+  <hr class="section-divider" />
+  <section id="testimonials" class="section testimonials-section">
+    <h2 class="section-title">Testimonials</h2>
+    
+    <!-- ===== Row 1 ===== -->
+    <div class="testimonial-row no-gsap">
+      <div class="testimonial-track">
+        <!-- Original slides (Set #1) -->
+        <div class="testimonial-slide">
+          <img src="images/project3.jpg" alt="Testimonial 1" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project2.jpg" alt="Testimonial 2" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project13.jpg" alt="Testimonial 3" class="testimonial-image" />
+        </div>
+        
+        <!-- Duplicate slides (Set #2) - EXACT copies of Set #1 -->
+        <div class="testimonial-slide">
+          <img src="images/project15.jpg" alt="Testimonial 1" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project2.jpg" alt="Testimonial 2" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project3.jpg" alt="Testimonial 3" class="testimonial-image" />
+        </div>
+      </div>
+    </div>
+  
+    <!-- ===== Row 2 ===== -->
+    <div class="testimonial-row no-gsap">
+      <div class="testimonial-track">
+        <!-- Original slides (Set #1) -->
+        <div class="testimonial-slide">
+          <img src="images/project4.jpg" alt="Testimonial 4" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project5.jpg" alt="Testimonial 5" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project6.jpg" alt="Testimonial 6" class="testimonial-image" />
+        </div>
+  
+        <!-- Duplicate slides (Set #2) -->
+        <div class="testimonial-slide">
+          <img src="images/project4.jpg" alt="Testimonial 4" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project5.jpg" alt="Testimonial 5" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project6.jpg" alt="Testimonial 6" class="testimonial-image" />
+        </div>
+      </div>
+    </div>
+  
+    <!-- ===== Row 3 ===== -->
+    <div class="testimonial-row no-gsap">
+      <div class="testimonial-track">
+        <!-- Original slides (Set #1) -->
+        <div class="testimonial-slide">
+          <img src="images/project7.jpg" alt="Testimonial 7" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project8.jpg" alt="Testimonial 8" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project9.jpg" alt="Testimonial 9" class="testimonial-image" />
+        </div>
+  
+        <!-- Duplicate slides (Set #2) -->
+        <div class="testimonial-slide">
+          <img src="images/project7.jpg" alt="Testimonial 7" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project8.jpg" alt="Testimonial 8" class="testimonial-image" />
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/project9.jpg" alt="Testimonial 9" class="testimonial-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <h2 class="section-title">Contact</h2>
+    <!-- Calendly Inline Widget -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/kylekumarbusiness" style="min-width:320px;height:700px;"></div>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+    <!-- Contact Form -->
+    <form id="contactForm" class="contact-form glass-card" action="mailto:kylekumarbusiness@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="email" name="Email" placeholder="Your Email" required />
+      <textarea rows="4" name="Message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="cta-button">Send Message</button>
+    </form>
+    <div id="formSuccess" class="form-success" style="display: none;">
+      <p>Thank you for your message!</p>
+    </div>
+  </section>
+
+  <!-- Modal for Project Details -->
+  <div id="projectModal" class="modal-overlay">
+    <div class="modal-content glass-card">
+      <button class="modal-close">&times;</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+      <ul id="modalBullets"></ul>
+      <div class="modal-carousel"></div>
+    </div>
+  </div>
+
+  <footer class="footer-section">
+    <p>&copy; 2025 Kairo Code Solutions. All rights reserved.</p>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
