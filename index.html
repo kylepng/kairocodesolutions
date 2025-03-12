@@ -222,26 +222,35 @@
     </div>
   </section>
   
+<!-- Contact Form -->
+<form id="contactForm" class="contact-form glass-card">
+  <input type="text" name="Name" id="name" placeholder="Your Name" required />
+  <input type="email" name="Email" id="email" placeholder="Your Email" required />
+  <textarea rows="4" name="Message" id="message" placeholder="Your Message" required></textarea>
+  <button type="submit" class="cta-button">Send Message</button>
+</form>
+<div id="formSuccess" class="form-success" style="display: none;">
+  <p>Thank you! We will get back to you shortly.</p>
+</div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <h2 class="section-title">Contact</h2>
-    <!-- Calendly Inline Widget -->
-    <div class="calendly-inline-widget" data-url="https://calendly.com/kylekumarbusiness" style="min-width:320px;height:700px;"></div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
-    <!-- Contact Form -->
-    <form id="contactForm" class="contact-form glass-card" action="mailto:kylekumarbusiness@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="Name" placeholder="Your Name" required />
-      <input type="email" name="Email" placeholder="Your Email" required />
-      <textarea rows="4" name="Message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="cta-button">Send Message</button>
-    </form>
-    <div id="formSuccess" class="form-success" style="display: none;">
-      <p>Thank you for your message!</p>
-    </div>
-  </section>
-
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    let formData = new FormData(this);
+    
+    let response = await fetch("https://formspree.io/f/xaneypvd", {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+    });
+    
+    if (response.ok) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  });
+</script>
   <!-- Modal for Project Details -->
   <div id="projectModal" class="modal-overlay">
     <div class="modal-content glass-card">
