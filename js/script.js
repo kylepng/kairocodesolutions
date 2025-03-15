@@ -243,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  
   // Contact Form
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');

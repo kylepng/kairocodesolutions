@@ -248,50 +248,57 @@ html, body {
   box-shadow: 0 8px 15px rgba(0,0,0,0.3);
 }
 
-/* Modal for Project Details */
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none; /* will be set to flex when active */
   justify-content: center;
   align-items: center;
   z-index: 99999;
 }
+
+/* Modal Content */
 .modal-content {
-  max-width: 700px;
-  width: 90%;
-  position: relative;
-  text-align: left;
+  width: 90vw;
+  max-width: 1000px;    /* Adjust as needed */
+  max-height: 90vh;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;     /* Allows vertical scrolling */
 }
-.modal-close {
-  position: absolute;
-  top: 10px; right: 10px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #000;
-  font-weight: 900;
-}
+
+/* Modal Carousel */
 .modal-carousel {
   display: flex;
   gap: 1rem;
-  overflow-x: auto;
+  overflow-x: auto;     /* Horizontal scrolling for images */
+  width: 100%;
   margin-top: 1rem;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
 }
+
+/* Carousel Images */
 .modal-carousel img {
-  flex: 0 0 400px;
+  max-height: 70vh;     /* Adjust height for a good view */
+  object-fit: contain;
   border-radius: 10px;
   transition: transform 0.3s, box-shadow 0.3s;
-  max-width: 100%;  /* Ensures image doesn't overflow horizontally */
-  height: auto;     /* Keeps the aspect ratio */
 }
+
 .modal-carousel img:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
+
 
 /* Basic container for the testimonials section */
 .testimonials-section {
