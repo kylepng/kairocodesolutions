@@ -41,8 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
       loop: true,
       autoplay: true,
       path: 'animations/phonepopup.json'
+
+      
+      
     });
   }
+  setTimeout(() => {
+    document.querySelector('.hero-section').style.filter = "brightness(1)";
+  }, 500);
+  
+  
 
   // About
   const aboutLottie = document.getElementById('aboutLottie');

@@ -57,21 +57,61 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="section hero-section">
-    <!-- Lottie for Hero (phonepopup.json) -->
-    <div class="hero-lottie" id="heroLottie"></div>
-    <div class="hero-content glass-card">
-      <h1 class="hero-heading">
-        No more time wasted on bad f*cking devs – We deliver high-end, fast, full-stack solutions.
-      </h1>
-      <p class="hero-subheading">
-        Experience code that scales, performs, and makes your life easier.
-      </p>
-    </div>
-  </section>
-  <hr class="section-divider" />
+<!-- Hero Section -->
+<section id="hero" class="section hero-section">
+  <!-- Lottie for Hero (phonepopup.json) -->
+  <div class="hero-lottie" id="heroLottie"></div>
+  <div class="hero-content glass-card">
+    <h1 class="hero-heading">
+      No more time wasted on bad f*cking devs – We deliver high-end, fast, full-stack solutions.
+    </h1>
+    <p class="hero-subheading">
+      Experience code that scales, performs, and makes your life easier.
+    </p>
+    <a href="https://www.upwork.com/freelancers/~016a1dd29b31fedacd" target="_blank" class="upwork-button">View My Upwork Profile</a>
+  </div>
+</section>
+<hr class="section-divider" />
 
+
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: url('../images/hero-background.jpg') no-repeat center center/cover;
+    color: rgb(0, 0, 0);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7); /* Darker transparent background for cleaner look */
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px; /* Keeps the original width */
+  }
+
+  .upwork-button {
+    display: inline-block;
+    background-color: #6FDA44; /* Upwork Green */
+    color: white;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .upwork-button:hover {
+    background-color: #5AB536;
+  }
+</style>
  <!-- About Section -->
 <section id="about" class="section about-section">
   <h2 class="section-title">About</h2>
