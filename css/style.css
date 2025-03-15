@@ -325,22 +325,22 @@ html, body {
      Increase for slower scrolling; decrease for faster. */
 }
 
-/* Each slide wide enough to force horizontal scrolling */
-.testimonial-slide {
-  flex-shrink: 0;
-  min-width: 600px; /* must be wide enough so we have overflow horizontally */
-  margin: 0 1rem;   /* spacing between slides */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Reduce space between testimonial rows */
+.testimonial-row.no-gsap {
+  margin-bottom: 1rem;  /* Was 2rem; adjust as needed */
+  height: 250px;        /* Lower the fixed height so there's less empty space */
 }
 
-/* The images themselves */
-.testimonial-image {
-  width: 500px;        /* adjust as you like */
-  object-fit: contain; /* or 'cover' if you want them cropped */
-  border-radius: 10px;
+/* Decrease horizontal spacing between slides */
+.testimonial-slide {
+  margin: 0 0.5rem;     /* Was 0 1rem; smaller side margins = less white space */
 }
+
+/* Optionally shrink images if they look too large now */
+.testimonial-image {
+  width: 400px;         /* Was 500px; adjust to suit your layout */
+}
+
 
 /* Keyframes for infinite scrolling from 0 to -50% */
 @keyframes scroll-left {
