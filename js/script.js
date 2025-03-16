@@ -10,26 +10,30 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.style.display = navOpen ? 'block' : 'none';
   });
 
-  // Smooth scrolling for nav links
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        gsap.to(window, {
-          duration: 1,
-          scrollTo: { y: target, autoKill: false },
-          ease: "power2.out"
-        });
-      }
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      if (window.innerWidth <= 768) {
-        navOpen = false;
-        nav.style.display = 'none';
-      }
-    });
+ // Smooth scrolling for nav links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      gsap.to(window, {
+        duration: 1.5, // Increased duration for a smoother feel
+        scrollTo: { y: target, autoKill: false },
+        ease: "power2.out",
+        onComplete: () => {
+          // Hide the nav after scrolling completes (for mobile)
+          if (window.innerWidth <= 768) {
+            navOpen = false;
+            nav.style.display = 'none';
+          }
+        }
+      });
+    }
+    // Update active link styling
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
   });
+});
 
   // Lottie Animations
   // Hero

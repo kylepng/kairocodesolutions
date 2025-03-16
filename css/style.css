@@ -131,6 +131,11 @@ html, body {
   
   
 }
+/* Example: hinting that the element will be animated */
+.nav, .glass-card, .hero-content {
+  will-change: transform, opacity;
+}
+
 .hero-lottie {
   position: absolute;
   top: 0; left: 0;
