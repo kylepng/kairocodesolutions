@@ -64,6 +64,14 @@ const Index = () => {
     });
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsNavOpen(false);
+  };
+
   return (
     <div className="min-h-screen relative bg-black text-white">
       {/* Navigation */}
@@ -94,7 +102,9 @@ const Index = () => {
             <a href="#projects" className="text-gray-400 hover:text-kairo-blue transition-colors">Projects</a>
             <a href="#testimonials" className="text-gray-400 hover:text-kairo-blue transition-colors">Testimonials</a>
             <a href="#contact">
-              <Button className="cyber-button">Contact Us</Button>
+              <Button className="cyber-button" onClick={() => scrollToSection('contact')}>
+                Contact Us
+              </Button>
             </a>
           </nav>
         </div>
@@ -160,10 +170,14 @@ const Index = () => {
               Full-stack development expertise to build robust, scalable, and innovative web applications for your business.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="cyber-button">
+              <Button className="cyber-button" onClick={() => scrollToSection('contact')}>
                 Start a Project <ChevronRight className="ml-2" />
               </Button>
-              <Button variant="outline" className="border-kairo-blue text-kairo-blue hover:bg-kairo-blue/20 px-8 py-6 text-lg">
+              <Button 
+                variant="outline" 
+                className="border-kairo-blue text-kairo-blue hover:bg-kairo-blue/20 px-8 py-6 text-lg"
+                onClick={() => scrollToSection('projects')}
+              >
                 View Our Work
               </Button>
             </div>
