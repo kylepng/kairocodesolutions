@@ -9,6 +9,7 @@ import HeroCanvas from "@/components/HeroCanvas";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ThreeScene from "@/components/ThreeScene";
 import AboutUs from "@/components/AboutUs";
+import Projects from "@/components/Projects";
 import { 
   Code, 
   Server, 
@@ -331,46 +332,7 @@ const Index = () => {
       <AboutUs />
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-black relative">
-        <div className="absolute inset-0 grid-pattern opacity-10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Featured <span className="text-kairo-blue">Projects</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Explore some of our recent work that showcases our expertise and creativity.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <ProjectCard 
-              title="E-Commerce Platform" 
-              description="A full-featured online store with payment processing, inventory management, and customer analytics."
-              tags={["React", "Node.js", "MongoDB", "AWS"]}
-            />
-            <ProjectCard 
-              title="Healthcare Management System" 
-              description="An integrated platform for patient records, appointment scheduling, and telemedicine features."
-              tags={["Angular", "Python", "PostgreSQL", "Docker"]}
-            />
-            <ProjectCard 
-              title="Real Estate Marketplace" 
-              description="A property listing and search platform with virtual tours and mortgage calculator integration."
-              tags={["Next.js", "Express", "MySQL", "GCP"]}
-            />
-            <ProjectCard 
-              title="Financial Analytics Dashboard" 
-              description="Interactive data visualization tool for financial performance monitoring and forecasting."
-              tags={["Vue", "Django", "Redis", "D3.js"]}
-            />
-          </div>
-          
-          <div className="text-center">
-            <Button variant="outline" className="cyber-button">
-              View All Projects <ArrowRight className="ml-2" />
-            </Button>
-          </div>
-        </div>
-      </section>
+      <Projects />
 
       {/* Testimonials */}
       <section id="testimonials" className="py-20 bg-zinc-900/50 relative">
@@ -540,25 +502,6 @@ const ProcessStep = ({ number, title, description, icon }) => {
       <h3 className="font-bold text-xl mb-2 text-white">{title}</h3>
       <p className="text-gray-400">{description}</p>
     </div>
-  );
-};
-
-const ProjectCard = ({ title, description, tags }) => {
-  return (
-    <Card className="bg-zinc-900/70 backdrop-blur-sm border border-zinc-800 p-8 rounded-lg animate-on-scroll hover:border-kairo-blue/50 transition-all duration-300 neon-border">
-      <h3 className="font-bold text-xl mb-3 text-white">{title}</h3>
-      <p className="text-gray-400 mb-6">{description}</p>
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag, index) => (
-          <span 
-            key={index} 
-            className="px-3 py-1 bg-kairo-blue/20 border border-kairo-blue/30 text-kairo-blue rounded-full text-xs font-medium"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </Card>
   );
 };
 
