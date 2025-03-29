@@ -6,6 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import HeroCanvas from "@/components/HeroCanvas";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import ThreeScene from "@/components/ThreeScene";
 import { 
   Code, 
   Server, 
@@ -61,22 +64,22 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-black text-white">
       {/* Navigation */}
       <header 
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+          isScrolled ? "bg-black/80 backdrop-blur-md shadow-md shadow-kairo-blue/10 py-2" : "bg-transparent py-4"
         }`}
       >
         <div className="container mx-auto flex justify-between items-center">
           <a href="/" className="flex items-center space-x-2">
             <Code className="h-8 w-8 text-kairo-blue" />
-            <span className="font-bold text-2xl text-kairo-darkBlue">Kairo</span>
+            <span className="font-bold text-2xl text-white glow-text">Kairo</span>
           </a>
           
           {/* Mobile menu button */}
           <button 
-            className="block md:hidden text-kairo-darkBlue"
+            className="block md:hidden text-white"
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
             {isNavOpen ? <X size={24} /> : <Menu size={24} />}
@@ -84,110 +87,92 @@ const Index = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-10">
-            <a href="#services" className="text-kairo-gray hover:text-kairo-blue transition-colors">Services</a>
-            <a href="#technologies" className="text-kairo-gray hover:text-kairo-blue transition-colors">Technologies</a>
-            <a href="#projects" className="text-kairo-gray hover:text-kairo-blue transition-colors">Projects</a>
-            <a href="#testimonials" className="text-kairo-gray hover:text-kairo-blue transition-colors">Testimonials</a>
+            <a href="#services" className="text-gray-400 hover:text-kairo-blue transition-colors">Services</a>
+            <a href="#technologies" className="text-gray-400 hover:text-kairo-blue transition-colors">Technologies</a>
+            <a href="#projects" className="text-gray-400 hover:text-kairo-blue transition-colors">Projects</a>
+            <a href="#testimonials" className="text-gray-400 hover:text-kairo-blue transition-colors">Testimonials</a>
             <a href="#contact">
-              <Button className="bg-kairo-blue hover:bg-kairo-darkBlue">Contact Us</Button>
+              <Button className="cyber-button">Contact Us</Button>
             </a>
           </nav>
         </div>
         
         {/* Mobile Navigation */}
         {isNavOpen && (
-          <div className="md:hidden bg-white py-4 px-4 shadow-lg">
+          <div className="md:hidden bg-black/90 backdrop-blur-lg py-4 px-4 border-t border-zinc-800">
             <nav className="flex flex-col space-y-4">
               <a 
                 href="#services" 
-                className="text-kairo-gray hover:text-kairo-blue transition-colors"
+                className="text-gray-400 hover:text-kairo-blue transition-colors"
                 onClick={() => setIsNavOpen(false)}
               >
                 Services
               </a>
               <a 
                 href="#technologies" 
-                className="text-kairo-gray hover:text-kairo-blue transition-colors"
+                className="text-gray-400 hover:text-kairo-blue transition-colors"
                 onClick={() => setIsNavOpen(false)}
               >
                 Technologies
               </a>
               <a 
                 href="#projects" 
-                className="text-kairo-gray hover:text-kairo-blue transition-colors"
+                className="text-gray-400 hover:text-kairo-blue transition-colors"
                 onClick={() => setIsNavOpen(false)}
               >
                 Projects
               </a>
               <a 
                 href="#testimonials" 
-                className="text-kairo-gray hover:text-kairo-blue transition-colors"
+                className="text-gray-400 hover:text-kairo-blue transition-colors"
                 onClick={() => setIsNavOpen(false)}
               >
                 Testimonials
               </a>
               <a href="#contact" onClick={() => setIsNavOpen(false)}>
-                <Button className="w-full bg-kairo-blue hover:bg-kairo-darkBlue">Contact Us</Button>
+                <Button className="w-full cyber-button">Contact Us</Button>
               </a>
             </nav>
           </div>
         )}
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 hero-gradient">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl font-bold text-kairo-darkBlue mb-6">
-              Transforming Ideas into Digital Solutions
+      {/* Hero Section with 3D Robot */}
+      <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center overflow-hidden">
+        {/* 3D Background */}
+        <AnimatedBackground />
+        
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
+          <div className="z-10">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 glow-text">
+              <span className="text-kairo-blue">Transforming</span> Ideas into Digital <span className="text-kairo-blue">Solutions</span>
             </h1>
-            <p className="text-lg text-kairo-gray mb-10">
+            <p className="text-lg text-gray-300 mb-10">
               Full-stack development expertise to build robust, scalable, and innovative web applications for your business.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-kairo-blue hover:bg-kairo-darkBlue text-white px-8 py-6 text-lg">
+              <Button className="cyber-button">
                 Start a Project <ChevronRight className="ml-2" />
               </Button>
-              <Button variant="outline" className="border-kairo-blue text-kairo-blue hover:bg-kairo-lightBlue/20 px-8 py-6 text-lg">
+              <Button variant="outline" className="border-kairo-blue text-kairo-blue hover:bg-kairo-blue/20 px-8 py-6 text-lg">
                 View Our Work
               </Button>
             </div>
           </div>
-          <div className="relative animate-on-scroll">
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-kairo-lightBlue/30 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-kairo-blue/20 rounded-full blur-3xl"></div>
-            <div className="relative bg-white p-6 rounded-xl shadow-xl">
-              <pre className="text-sm overflow-x-auto p-4 bg-kairo-lightGray rounded-lg">
-                <code className="text-kairo-darkGray">
-{`function KairoSolutions() {
-  const services = [
-    "Full-Stack Development",
-    "Web Applications",
-    "Mobile Apps",
-    "API Integration"
-  ];
-  
-  return (
-    <div className="solutions">
-      {services.map(service => 
-        <Service key={service} name={service} />
-      )}
-    </div>
-  );
-}`}
-                </code>
-              </pre>
-            </div>
+          
+          <div className="relative h-[400px] md:h-[500px]">
+            <HeroCanvas />
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-20 bg-zinc-900/50 relative">
+        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-kairo-darkBlue mb-4">Our Services</h2>
-            <p className="text-kairo-gray max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Our <span className="text-kairo-blue">Services</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Comprehensive full-stack development services to cover all aspects of your digital presence.
             </p>
           </div>
@@ -227,22 +212,28 @@ const Index = () => {
         </div>
       </section>
       
+      {/* 3D Scene Section */}
+      <section className="py-10 relative overflow-hidden">
+        <ThreeScene />
+      </section>
+      
       {/* Technologies Section */}
-      <section id="technologies" className="py-20 bg-kairo-lightGray">
-        <div className="container mx-auto px-4">
+      <section id="technologies" className="py-20 bg-black relative">
+        <div className="absolute inset-0 grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-kairo-darkBlue mb-4">Technologies We Use</h2>
-            <p className="text-kairo-gray max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Technologies We <span className="text-kairo-blue">Use</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               We leverage modern technologies to build fast, reliable, and scalable applications.
             </p>
           </div>
           
           <Tabs defaultValue="frontend" className="max-w-4xl mx-auto">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="frontend">Frontend</TabsTrigger>
-              <TabsTrigger value="backend">Backend</TabsTrigger>
-              <TabsTrigger value="database">Database</TabsTrigger>
-              <TabsTrigger value="devops">DevOps</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-4 mb-8 bg-zinc-900/50 p-1 border border-zinc-800">
+              <TabsTrigger value="frontend" className="data-[state=active]:bg-kairo-blue data-[state=active]:text-black">Frontend</TabsTrigger>
+              <TabsTrigger value="backend" className="data-[state=active]:bg-kairo-blue data-[state=active]:text-black">Backend</TabsTrigger>
+              <TabsTrigger value="database" className="data-[state=active]:bg-kairo-blue data-[state=active]:text-black">Database</TabsTrigger>
+              <TabsTrigger value="devops" className="data-[state=active]:bg-kairo-blue data-[state=active]:text-black">DevOps</TabsTrigger>
             </TabsList>
             <TabsContent value="frontend" className="animate-on-scroll">
               <TechStack 
@@ -289,11 +280,12 @@ const Index = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-zinc-900/50 relative">
+        <div className="absolute inset-0 grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-kairo-darkBlue mb-4">Our Development Process</h2>
-            <p className="text-kairo-gray max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Our Development <span className="text-kairo-blue">Process</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               A structured approach to deliver high-quality solutions on time and within budget.
             </p>
           </div>
@@ -328,11 +320,12 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-kairo-darkBlue text-white">
-        <div className="container mx-auto px-4">
+      <section id="projects" className="py-20 bg-black relative">
+        <div className="absolute inset-0 grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Featured <span className="text-kairo-blue">Projects</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Explore some of our recent work that showcases our expertise and creativity.
             </p>
           </div>
@@ -361,7 +354,7 @@ const Index = () => {
           </div>
           
           <div className="text-center">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-kairo-darkBlue">
+            <Button variant="outline" className="cyber-button">
               View All Projects <ArrowRight className="ml-2" />
             </Button>
           </div>
@@ -369,11 +362,12 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section id="testimonials" className="py-20 bg-zinc-900/50 relative">
+        <div className="absolute inset-0 grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-kairo-darkBlue mb-4">Client Testimonials</h2>
-            <p className="text-kairo-gray max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Client <span className="text-kairo-blue">Testimonials</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what our clients have to say.
             </p>
           </div>
@@ -399,36 +393,37 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 hero-gradient">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="py-20 bg-black relative">
+        <div className="absolute inset-0 grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-kairo-darkBlue mb-4">Let's Work Together</h2>
-            <p className="text-kairo-gray max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Let's Work <span className="text-kairo-blue">Together</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Ready to bring your project to life? Contact us to discuss how we can help.
             </p>
           </div>
           
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+          <div className="max-w-3xl mx-auto bg-zinc-900/70 backdrop-blur-lg rounded-lg border border-zinc-800 p-8 neon-border">
             <form onSubmit={handleContactSubmit}>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-kairo-darkGray mb-2">Name</label>
-                  <Input id="name" placeholder="Your name" required />
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                  <Input id="name" placeholder="Your name" required className="bg-zinc-800 border-zinc-700 text-white" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-kairo-darkGray mb-2">Email</label>
-                  <Input id="email" type="email" placeholder="Your email" required />
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                  <Input id="email" type="email" placeholder="Your email" required className="bg-zinc-800 border-zinc-700 text-white" />
                 </div>
               </div>
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-kairo-darkGray mb-2">Subject</label>
-                <Input id="subject" placeholder="How can we help?" required />
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                <Input id="subject" placeholder="How can we help?" required className="bg-zinc-800 border-zinc-700 text-white" />
               </div>
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-kairo-darkGray mb-2">Message</label>
-                <Textarea id="message" placeholder="Tell us about your project" rows={5} required />
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                <Textarea id="message" placeholder="Tell us about your project" rows={5} required className="bg-zinc-800 border-zinc-700 text-white" />
               </div>
-              <Button type="submit" className="bg-kairo-blue hover:bg-kairo-darkBlue w-full py-6 text-lg">
+              <Button type="submit" className="cyber-button w-full py-6 text-lg">
                 Send Message
               </Button>
             </form>
@@ -437,20 +432,20 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-kairo-darkBlue text-white py-12">
+      <footer className="bg-zinc-900 text-white py-12 border-t border-zinc-800">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Code className="h-8 w-8 text-kairo-blue" />
-                <span className="font-bold text-2xl">Kairo</span>
+                <span className="font-bold text-2xl glow-text">Kairo</span>
               </div>
               <p className="text-gray-400 mb-4">
                 Building exceptional digital experiences through full-stack expertise.
               </p>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Services</h3>
+              <h3 className="font-bold text-lg mb-4 text-white">Services</h3>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Frontend Development</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Backend Development</a></li>
@@ -459,7 +454,7 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Company</h3>
+              <h3 className="font-bold text-lg mb-4 text-white">Company</h3>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">About Us</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Blog</a></li>
@@ -468,7 +463,7 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Contact Us</h3>
+              <h3 className="font-bold text-lg mb-4 text-white">Contact Us</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>hello@kairocodes.com</li>
                 <li>+1 (555) 123-4567</li>
@@ -476,7 +471,7 @@ const Index = () => {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8">
+          <div className="border-t border-zinc-800 pt-8">
             <p className="text-center text-gray-500">
               &copy; {new Date().getFullYear()} Kairo Code Solutions. All rights reserved.
             </p>
@@ -492,25 +487,25 @@ const Index = () => {
 const ServiceCard = ({ title, description, icon }) => {
   return (
     <Card className="service-card animate-on-scroll">
-      <div className="p-4 bg-kairo-lightBlue/20 rounded-full w-fit mb-6">
+      <div className="p-4 bg-kairo-blue/10 rounded-full w-fit mb-6">
         {icon}
       </div>
-      <h3 className="font-bold text-xl mb-3 text-kairo-darkBlue">{title}</h3>
-      <p className="text-kairo-gray">{description}</p>
+      <h3 className="font-bold text-xl mb-3 text-white">{title}</h3>
+      <p className="text-gray-400">{description}</p>
     </Card>
   );
 };
 
 const TechStack = ({ title, description, technologies }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8">
-      <h3 className="font-bold text-xl mb-2 text-kairo-darkBlue">{title}</h3>
-      <p className="text-kairo-gray mb-6">{description}</p>
+    <div className="bg-zinc-900/70 rounded-lg border border-zinc-800 p-8">
+      <h3 className="font-bold text-xl mb-2 text-white">{title}</h3>
+      <p className="text-gray-400 mb-6">{description}</p>
       <div className="flex flex-wrap gap-3">
         {technologies.map((tech, index) => (
           <span 
             key={index} 
-            className="px-4 py-2 bg-kairo-lightBlue/20 text-kairo-darkBlue rounded-full text-sm font-medium"
+            className="px-4 py-2 bg-kairo-blue/10 border border-kairo-blue/30 text-kairo-blue rounded-full text-sm font-medium"
           >
             {tech}
           </span>
@@ -524,29 +519,29 @@ const ProcessStep = ({ number, title, description, icon }) => {
   return (
     <div className="animate-on-scroll flex flex-col items-center text-center">
       <div className="relative mb-6">
-        <div className="bg-kairo-blue rounded-full w-20 h-20 flex items-center justify-center mb-4">
+        <div className="bg-kairo-blue/20 border border-kairo-blue/50 rounded-full w-20 h-20 flex items-center justify-center mb-4 neon-border">
           {icon}
         </div>
-        <span className="absolute top-0 right-0 bg-kairo-darkBlue text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
+        <span className="absolute top-0 right-0 bg-kairo-blue text-black rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
           {number}
         </span>
       </div>
-      <h3 className="font-bold text-xl mb-2 text-kairo-darkBlue">{title}</h3>
-      <p className="text-kairo-gray">{description}</p>
+      <h3 className="font-bold text-xl mb-2 text-white">{title}</h3>
+      <p className="text-gray-400">{description}</p>
     </div>
   );
 };
 
 const ProjectCard = ({ title, description, tags }) => {
   return (
-    <Card className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-lg animate-on-scroll hover:bg-white/20 transition-all duration-300">
-      <h3 className="font-bold text-xl mb-3">{title}</h3>
-      <p className="text-gray-300 mb-6">{description}</p>
+    <Card className="bg-zinc-900/70 backdrop-blur-sm border border-zinc-800 p-8 rounded-lg animate-on-scroll hover:border-kairo-blue/50 transition-all duration-300 neon-border">
+      <h3 className="font-bold text-xl mb-3 text-white">{title}</h3>
+      <p className="text-gray-400 mb-6">{description}</p>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag, index) => (
           <span 
             key={index} 
-            className="px-3 py-1 bg-kairo-blue/30 text-white rounded-full text-xs font-medium"
+            className="px-3 py-1 bg-kairo-blue/20 border border-kairo-blue/30 text-kairo-blue rounded-full text-xs font-medium"
           >
             {tag}
           </span>
@@ -558,16 +553,16 @@ const ProjectCard = ({ title, description, tags }) => {
 
 const TestimonialCard = ({ quote, author, company }) => {
   return (
-    <Card className="p-8 border border-gray-200 rounded-lg shadow-lg animate-on-scroll">
+    <Card className="p-8 bg-zinc-900/70 border border-zinc-800 rounded-lg animate-on-scroll hover:border-kairo-blue/30 transition-all duration-300">
       <div className="mb-4 text-kairo-blue">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="none">
           <path d="M11.9999 14.1569L17.4158 9.74099L19.5369 11.862L11.9999 19.3991L4.46287 11.862L6.58407 9.74099L11.9999 14.1569Z"></path>
         </svg>
       </div>
-      <p className="italic text-kairo-gray mb-6">"{quote}"</p>
+      <p className="italic text-gray-400 mb-6">"{quote}"</p>
       <div>
-        <p className="font-bold text-kairo-darkBlue">{author}</p>
-        <p className="text-sm text-kairo-gray">{company}</p>
+        <p className="font-bold text-white">{author}</p>
+        <p className="text-sm text-gray-400">{company}</p>
       </div>
     </Card>
   );

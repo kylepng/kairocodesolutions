@@ -90,7 +90,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-white;
     font-family: 'Inter', sans-serif;
   }
 
@@ -99,7 +99,7 @@
   }
 
   .service-card {
-    @apply bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300;
+    @apply bg-zinc-900/80 backdrop-blur-lg p-6 rounded-lg border border-zinc-800 hover:border-kairo-blue/50 transition-all duration-300;
   }
 
   .animate-on-scroll {
@@ -108,5 +108,42 @@
 
   .animate-on-scroll.visible {
     @apply animate-fade-in;
+  }
+  
+  .grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(14, 165, 233, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
+  }
+  
+  /* Cyberpunk button */
+  .cyber-button {
+    @apply relative overflow-hidden bg-transparent border border-kairo-blue text-kairo-blue px-8 py-4 uppercase tracking-wider font-bold transition-all duration-300;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5), inset 0 0 10px rgba(14, 165, 233, 0.2);
+  }
+  
+  .cyber-button:hover {
+    @apply bg-kairo-blue text-black;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.8), inset 0 0 20px rgba(14, 165, 233, 0.4);
+  }
+  
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 bg-kairo-blue opacity-20;
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 70%);
+    transition: transform 0.3s ease;
+  }
+  
+  .cyber-button:hover::before {
+    transform: translateY(-10px);
   }
 }
