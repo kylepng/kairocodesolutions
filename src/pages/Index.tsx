@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import HeroCanvas from "@/components/HeroCanvas";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ThreeScene from "@/components/ThreeScene";
+import AboutUs from "@/components/AboutUs";
 import { 
   Code, 
   Server, 
@@ -89,6 +89,7 @@ const Index = () => {
           <nav className="hidden md:flex items-center space-x-10">
             <a href="#services" className="text-gray-400 hover:text-kairo-blue transition-colors">Services</a>
             <a href="#technologies" className="text-gray-400 hover:text-kairo-blue transition-colors">Technologies</a>
+            <a href="#about" className="text-gray-400 hover:text-kairo-blue transition-colors">About Us</a>
             <a href="#projects" className="text-gray-400 hover:text-kairo-blue transition-colors">Projects</a>
             <a href="#testimonials" className="text-gray-400 hover:text-kairo-blue transition-colors">Testimonials</a>
             <a href="#contact">
@@ -114,6 +115,13 @@ const Index = () => {
                 onClick={() => setIsNavOpen(false)}
               >
                 Technologies
+              </a>
+              <a 
+                href="#about" 
+                className="text-gray-400 hover:text-kairo-blue transition-colors"
+                onClick={() => setIsNavOpen(false)}
+              >
+                About Us
               </a>
               <a 
                 href="#projects" 
@@ -319,6 +327,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <AboutUs />
+
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-black relative">
         <div className="absolute inset-0 grid-pattern opacity-10"></div>
@@ -456,10 +467,10 @@ const Index = () => {
             <div>
               <h3 className="font-bold text-lg mb-4 text-white">Company</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">About Us</a></li>
+                <li><a href="#about" className="text-gray-400 hover:text-kairo-blue transition-colors">About Us</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Blog</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Careers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Contact</a></li>
+                <li><a href="#contact" className="text-gray-400 hover:text-kairo-blue transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
