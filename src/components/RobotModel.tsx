@@ -1,23 +1,23 @@
 
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-export default function RobotModel(props: any) {
+export default function RobotModel(props: { position?: [number, number, number], scale?: number }) {
   const meshRef = useRef<THREE.Group>(null);
+  const { position = [0, 0, 0], scale = 1 } = props;
   
   // Simple animation
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.3) * 0.2;
-      meshRef.current.position.y = Math.sin(state.clock.getElapsedTime()) * 0.1;
+      meshRef.current.position.y = props.position?.[1] + Math.sin(state.clock.getElapsedTime()) * 0.1;
     }
   });
 
   // Fallback to basic geometry if model fails to load
   return (
-    <group {...props} ref={meshRef}>
+    <group ref={meshRef} position={position} scale={scale}>
       <mesh castShadow receiveShadow>
         <capsuleGeometry args={[0.5, 1, 4, 8]} />
         <meshStandardMaterial color="#333333" metalness={0.8} roughness={0.2} />

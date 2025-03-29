@@ -17,7 +17,6 @@ export default function FloatingGrid() {
     <group ref={gridRef} position={[0, -2, 0]}>
       <gridHelper 
         args={[20, 20, '#0EA5E9', '#222222']} 
-        position={[0, 0, 0]}
       />
     </group>
   );
