@@ -206,13 +206,14 @@ const Index = () => {
   Hire us now <ChevronRight className="ml-2" />
 </Button>
 
-              <Button 
-                variant="outline" 
-                className="border-kairo-blue text-kairo-blue hover:bg-kairo-blue/20 px-8 py-6 text-lg"
-                onClick={() => scrollToSection('projects')}
-              >
-                View Our Work
-              </Button>
+<Button 
+  variant="outline" 
+  className="border-kairo-blue text-kairo-blue hover:bg-kairo-blue/20 px-8 py-6 text-lg"
+  onClick={() => scrollToSection('projects')}
+>
+  View Our Work
+</Button>
+
             </div>
           </div>
           
@@ -223,50 +224,53 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-zinc-900/50 relative">
-        <div className="absolute inset-0 grid-pattern opacity-20"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Our <span className="text-kairo-blue">Services</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Comprehensive full-stack development services to cover all aspects of your digital presence.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ServiceCard 
-              title="Frontend Development" 
-              description="Crafting responsive, interactive, and intuitive user interfaces with modern frameworks."
-              icon={<Layout className="h-10 w-10 text-kairo-blue" />}
-            />
-            <ServiceCard 
-              title="Backend Development" 
-              description="Building robust server-side applications with secure, scalable, and efficient architectures."
-              icon={<Server className="h-10 w-10 text-kairo-blue" />}
-            />
-            <ServiceCard 
-              title="Database Design" 
-              description="Creating optimized data structures and relationships for seamless data management."
-              icon={<Database className="h-10 w-10 text-kairo-blue" />}
-            />
-            <ServiceCard 
-              title="API Development" 
-              description="Designing and implementing RESTful and GraphQL APIs for seamless integration."
-              icon={<Code className="h-10 w-10 text-kairo-blue" />}
-            />
-            <ServiceCard 
-              title="Mobile App Development" 
-              description="Developing cross-platform mobile applications that deliver exceptional user experiences."
-              icon={<Smartphone className="h-10 w-10 text-kairo-blue" />}
-            />
-            <ServiceCard 
-              title="Web Applications" 
-              description="Creating complete web solutions from concept to deployment with scalability in mind."
-              icon={<Globe className="h-10 w-10 text-kairo-blue" />}
-            />
-          </div>
-        </div>
-      </section>
+<section id="services" className="py-20" style={{ backgroundColor: "#020612" }}>
+  <div className="absolute inset-0 grid-pattern opacity-10"></div>
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">
+        Our <span className="text-kairo-blue">Services</span>
+      </h2>
+      <p className="text-gray-400 max-w-2xl mx-auto">
+        Comprehensive full-stack development services to cover all aspects of your digital presence.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ServiceCard 
+        title="Frontend Development" 
+        description="Crafting responsive, interactive, and intuitive user interfaces with modern frameworks."
+        icon={<Layout className="h-10 w-10 text-kairo-blue" />}
+      />
+      <ServiceCard 
+        title="Backend Development" 
+        description="Building robust server-side applications with secure, scalable, and efficient architectures."
+        icon={<Server className="h-10 w-10 text-kairo-blue" />}
+      />
+      <ServiceCard 
+        title="Database Design" 
+        description="Creating optimized data structures and relationships for seamless data management."
+        icon={<Database className="h-10 w-10 text-kairo-blue" />}
+      />
+      <ServiceCard 
+        title="API Development" 
+        description="Designing and implementing RESTful and GraphQL APIs for seamless integration."
+        icon={<Code className="h-10 w-10 text-kairo-blue" />}
+      />
+      <ServiceCard 
+        title="Mobile App Development" 
+        description="Developing cross-platform mobile applications that deliver exceptional user experiences."
+        icon={<Smartphone className="h-10 w-10 text-kairo-blue" />}
+      />
+      <ServiceCard 
+        title="Web Applications" 
+        description="Creating complete web solutions from concept to deployment with scalability in mind."
+        icon={<Globe className="h-10 w-10 text-kairo-blue" />}
+      />
+    </div>
+  </div>
+</section>
+
       
       {/* 3D Scene Section */}
       <section className="py-10 relative overflow-hidden">
