@@ -73,11 +73,7 @@ export default function Projects() {
           ))}
         </div>
         
-        <div className="text-center">
-          <Button variant="outline" className="cyber-button">
-            View All Projects <ArrowRight className="ml-2" />
-          </Button>
-        </div>
+        
       </div>
     </section>
   );

@@ -39,6 +39,7 @@ const Index = () => {
       } else {
         setIsScrolled(false);
       }
+
       
       // Animation on scroll
       const elements = document.querySelectorAll('.animate-on-scroll');
@@ -56,13 +57,6 @@ const Index = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -70,6 +64,39 @@ const Index = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsNavOpen(false);
+  };
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xaneypvd", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Formspree error:", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+      });
+    }
   };
 
   return (
@@ -108,6 +135,7 @@ const Index = () => {
             </a>
           </nav>
         </div>
+        
         
         {/* Mobile Navigation */}
         {isNavOpen && (
@@ -155,6 +183,7 @@ const Index = () => {
           </div>
         )}
       </header>
+      
 
       {/* Hero Section with 3D Robot */}
       <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center overflow-hidden">
@@ -170,9 +199,13 @@ const Index = () => {
               Full-stack development expertise to build robust, scalable, and innovative web applications for your business.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="cyber-button" onClick={() => scrollToSection('contact')}>
-                Start a Project <ChevronRight className="ml-2" />
-              </Button>
+            <Button
+  className="cyber-button"
+  onClick={() => window.open('https://upwork.com/freelancers/~016a1dd29b31fedacd', '_blank')}
+>
+  Hire us now <ChevronRight className="ml-2" />
+</Button>
+
               <Button 
                 variant="outline" 
                 className="border-kairo-blue text-kairo-blue hover:bg-kairo-blue/20 px-8 py-6 text-lg"
@@ -361,62 +394,92 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <TestimonialCard 
-              quote="Kairo transformed our business with a cutting-edge web application that streamlined our operations and delighted our customers."
-              author="Sarah Johnson"
-              company="TechInnovate Inc."
+              quote="Kyle is an excellent developer and exceeded my expectations on this project. I will definitely use his services on future projects!"
+              author="★★★★★"
+              company="Upwork"
             />
             <TestimonialCard 
-              quote="The team's technical expertise and attention to detail resulted in a product that exceeded our expectations. Highly recommended!"
-              author="Michael Chen"
-              company="GrowthSphere"
+              quote="It was excellent working with Kyle. Looking forward to engaging him in the future."
+              
+              author="★★★★★"
+              company="Upwork"
             />
             <TestimonialCard 
               quote="Working with Kairo was seamless from start to finish. They delivered our project on time and within budget with exceptional quality."
-              author="Emily Rodriguez"
-              company="FutureFocus Media"
+              author="★★★★★"
+              company="Upwork"
             />
           </div>
         </div>
       </section>
-
+                
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-black relative">
-        <div className="absolute inset-0 grid-pattern opacity-10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">Let's Work <span className="text-kairo-blue">Together</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Ready to bring your project to life? Contact us to discuss how we can help.
-            </p>
+<section id="contact" className="py-20 bg-black relative">
+  <div className="absolute inset-0 grid-pattern opacity-10"></div>
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 glow-text">
+        Let's Work <span className="text-kairo-blue">Together</span>
+      </h2>
+      <p className="text-gray-400 max-w-2xl mx-auto">
+        Ready to bring your project to life? Contact us to discuss how we can help.
+      </p>
+    </div>
+    
+    <div className="max-w-3xl mx-auto bg-zinc-900/70 backdrop-blur-lg rounded-lg border border-zinc-800 p-8 neon-border">
+      <form onSubmit={handleContactSubmit}>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+            <Input
+              id="name"
+              name="name" // added name attribute
+              placeholder="Your name"
+              required
+              className="bg-zinc-800 border-zinc-700 text-white"
+            />
           </div>
-          
-          <div className="max-w-3xl mx-auto bg-zinc-900/70 backdrop-blur-lg rounded-lg border border-zinc-800 p-8 neon-border">
-            <form onSubmit={handleContactSubmit}>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                  <Input id="name" placeholder="Your name" required className="bg-zinc-800 border-zinc-700 text-white" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                  <Input id="email" type="email" placeholder="Your email" required className="bg-zinc-800 border-zinc-700 text-white" />
-                </div>
-              </div>
-              <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
-                <Input id="subject" placeholder="How can we help?" required className="bg-zinc-800 border-zinc-700 text-white" />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                <Textarea id="message" placeholder="Tell us about your project" rows={5} required className="bg-zinc-800 border-zinc-700 text-white" />
-              </div>
-              <Button type="submit" className="cyber-button w-full py-6 text-lg">
-                Send Message
-              </Button>
-            </form>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+            <Input
+              id="email"
+              name="email" // added name attribute
+              type="email"
+              placeholder="Your email"
+              required
+              className="bg-zinc-800 border-zinc-700 text-white"
+            />
           </div>
         </div>
-      </section>
+        <div className="mb-6">
+          <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+          <Input
+            id="subject"
+            name="subject" // added name attribute
+            placeholder="How can we help?"
+            required
+            className="bg-zinc-800 border-zinc-700 text-white"
+          />
+        </div>
+        <div className="mb-6">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+          <Textarea
+            id="message"
+            name="message" // added name attribute
+            placeholder="Tell us about your project"
+            rows={5}
+            required
+            className="bg-zinc-800 border-zinc-700 text-white"
+          />
+        </div>
+        <Button type="submit" className="cyber-button w-full py-6 text-lg">
+          Send Message
+        </Button>
+      </form>
+    </div>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className="bg-zinc-900 text-white py-12 border-t border-zinc-800">
@@ -444,16 +507,16 @@ const Index = () => {
               <h3 className="font-bold text-lg mb-4 text-white">Company</h3>
               <ul className="space-y-2">
                 <li><a href="#about" className="text-gray-400 hover:text-kairo-blue transition-colors">About Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Blog</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors">Careers</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors"></a></li>
+                <li><a href="#" className="text-gray-400 hover:text-kairo-blue transition-colors"></a></li>
                 <li><a href="#contact" className="text-gray-400 hover:text-kairo-blue transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold text-lg mb-4 text-white">Contact Us</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>hello@kairocodes.com</li>
-                <li>+1 (555) 123-4567</li>
+                <li>kyle@kairocodesolutions.com</li>
+                <li></li>
                 <li>San Francisco, CA</li>
               </ul>
             </div>
